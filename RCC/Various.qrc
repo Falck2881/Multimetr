@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/">
+        <file>HelpStart.txt</file>
+        <file>HelpShell.txt</file>
+    </qresource>
+</RCC>

@@ -1,0 +1,9 @@
+
+<-------------------<COMMAND: type_mode>----------------->
+
+Example input: ./multimetr type_mode
+
+type_mode:
+
+    1) shell_mode   "The mode of command-line"
+    2) gui_mode     "The mode of graphics user interface"

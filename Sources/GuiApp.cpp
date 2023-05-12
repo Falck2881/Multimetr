@@ -13,7 +13,7 @@ GuiApp::GuiApp(qint32 argc, std::string argv):
 }
 
 
-qint32 GuiApp::run()
+void GuiApp::run()
 {
     char* buffer[]{argv.data()};
     QApplication app(argc,buffer);
@@ -21,7 +21,13 @@ qint32 GuiApp::run()
     qmlRegisterType<Client>("Client", 1, 0, "Client");
     QQmlApplicationEngine engine;
     engine.load(QUrl("qrc:/Windows/Sources/MainWindow.qml"));
-    return app.exec();
+
+    int result{app.exec()};
+
+    if(result != -1)
+        exit(0);
+    else
+        exit(1);
 }
 
 

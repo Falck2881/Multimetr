@@ -1,7 +1,6 @@
 #ifndef COMMUNICATIONCENTER_H
 #define COMMUNICATIONCENTER_H
 
-#include <QtGlobal>
 #include <string>
 
 class CommunicationCenter
@@ -9,10 +8,10 @@ class CommunicationCenter
     public:
         CommunicationCenter();
         std::string errorInConnection();
-        bool exists(const qint32 socket);
+        bool exists(const int socket);
         bool successfullyConnection(const int result);
     private:
-        quint32 attemptsToConnection;
+        int attemptsToConnection;
 };
 
 #endif // COMMUNICATIONCENTER_H

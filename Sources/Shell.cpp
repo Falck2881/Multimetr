@@ -2,7 +2,6 @@
 #include <iostream>
 #include <QFile>
 #include <regex>
-#include <QCoreApplication>
 
 Shell::Shell(const qint32 numberChannel):
     numberChannel(numberChannel),
@@ -10,15 +9,17 @@ Shell::Shell(const qint32 numberChannel):
                 "Use command 'help'. \n"),
     client{std::make_unique<Client>()}
 {
+
 }
 
-qint32 Shell::run()
+void Shell::run()
 {
     std::string name;
+
     while(true)
     {
-        std::cout << "Shell Multimetr: Number channels: " << numberChannel <<"\n"
-                     "Client: >>> ";
+        std::cout << "Shell Multimetr: Number channels: " << numberChannel << std::endl;
+        std::cout << "Client >>> ";
 
         name = inputOfCommand();
 
@@ -26,14 +27,13 @@ qint32 Shell::run()
             showHelp();
         else if(name == "close"){
             client->disconnect();
-            break;
+            exit(0);
         }else if(name != ""){
             client->sendRequest(name);
             std::cout << client->receiveAnswer() << "\n" <<std::endl;
         }
     }
 
-    return QCoreApplication::exec();
 }
 
 std::string Shell::inputOfCommand()

@@ -12,7 +12,7 @@ namespace Type
 
         public:
             virtual ~Application() = default;
-            virtual qint32 run() = 0;
+            virtual void run() = 0;
         protected:
             Application() = default;
     };

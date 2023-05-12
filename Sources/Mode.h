@@ -9,7 +9,7 @@
 class Mode
 {
     public:
-        Mode(const qint32 numberArguments, const char*arguments[]);
+        Mode(const qint32 numberArguments, const char*arguments);
         void startApp();
     private:
         bool isExistsOfArguments() const;
@@ -19,7 +19,7 @@ class Mode
         std::string readHelp() const;
     private:
         std::unique_ptr<Type::Application> app;
-        const qint32 numberArguments;
+        qint32 numberArguments;
 };
 
 #endif // MODE_H

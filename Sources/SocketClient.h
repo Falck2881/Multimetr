@@ -6,6 +6,7 @@
 #include <string>
 #include <QObject>
 
+
 class Socket: public QObject
 {
     Q_OBJECT

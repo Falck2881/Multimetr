@@ -10,7 +10,7 @@ CommunicationCenter::CommunicationCenter():attemptsToConnection(1)
 
 }
 
-bool CommunicationCenter::exists(const qint32 socket)
+bool CommunicationCenter::exists(const int socket)
 {
     if(socket != -1)
         return true;

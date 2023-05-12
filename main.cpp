@@ -1,11 +1,11 @@
-#include <QCoreApplication>
+#include <QApplication>
 #include "Mode.h"
 
 int main(int argc, char *argv[])
 {
-
-    Mode mode(argc,const_cast<const char**>(argv));
+    QApplication app(argc,argv);
+    Mode mode(argc,argv[1]);
     mode.startApp();
 
-    return 0;
+    return app.exec();
 }

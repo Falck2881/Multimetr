@@ -12,7 +12,7 @@ class Shell: public Type::Application
     public:
         Shell(const qint32 numberChannel);
     private:
-        qint32 run() override;
+        void run() override;
         std::string inputOfCommand();
         std::string checkInput(std::string name);
         void showHelp();

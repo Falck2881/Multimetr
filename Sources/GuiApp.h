@@ -16,7 +16,7 @@ class GuiApp: public Type::Application
     public:
         GuiApp(qint32 argc, std::string argv);
     private:
-        qint32 run() override;
+        void run() override;
     private:
         QObject* buttonResult;
         qint32 argc;

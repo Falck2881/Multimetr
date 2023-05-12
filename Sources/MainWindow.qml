@@ -332,6 +332,7 @@ Window {
     }
 
     onClosing: {
+        console.log("Closing application")
         _client.disconnect()
     }
 }

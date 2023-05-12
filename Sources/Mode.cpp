@@ -4,16 +4,15 @@
 #include <QFile>
 #include <QByteArray>
 #include <iostream>
-#include <QCoreApplication>
 
-Mode::Mode(const qint32 numberArguments, const char* arguments[]):
+Mode::Mode(const qint32 numberArguments, const char* arguments):
     app(nullptr),numberArguments{numberArguments}
 {
     if(isExistsOfArguments())
-        createMode(arguments[1]);
+        createMode(arguments);
     else{
         warning();
-        QCoreApplication::exit(1);
+        exit(1);
     }
 }
 
@@ -24,17 +23,17 @@ bool Mode::isExistsOfArguments() const
 
 void Mode::createMode(const std::string typeMode)
 {
-    if(typeMode == "shell_mode")
+    if(typeMode == "shell")
         app = std::make_unique<Shell>(5);
     else if(typeMode == "GUI")
         app = std::make_unique<GuiApp>(1,typeMode);
     else if(typeMode == "help"){
         showHelp();
-        QCoreApplication::quit();
+        exit(0);
     }
     else{
         warning();
-        QCoreApplication::exit(1);
+        exit(1);
     }
 }
 
@@ -70,5 +69,5 @@ void Mode::warning()
 
 void Mode::startApp()
 {
-    QCoreApplication::exit(app->run());
+    app->run();
 }

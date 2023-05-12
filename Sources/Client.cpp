@@ -1,12 +1,11 @@
 #include "Client.h"
 #include <iostream>
 
-
-Client::Client():threadSocket(new QThread(&socket))
+Client::Client()
 {
-    socket.moveToThread(threadSocket);
+    socket.moveToThread(&threadSocket);
     connect();
-    threadSocket->start();
+    threadSocket.start();
 }
 
 void Client::connect()
@@ -82,7 +81,6 @@ void Client::onRunning()
 
 Client::~Client()
 {
-    threadSocket->quit();
-    threadSocket->wait();
-    delete threadSocket;
+    threadSocket.quit();
+    threadSocket.wait();
 }

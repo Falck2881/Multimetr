@@ -38,7 +38,7 @@ class Client: public QObject
     private:
         Socket socket;
         QString p_answer;
-        QThread* threadSocket;
+        QThread threadSocket;
 
     signals:
         void updateAnswer();

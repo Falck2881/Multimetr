@@ -12,9 +12,7 @@ ___
 
 Только симейство Linux
 
-:clapper: Start 
-
-___
+## :clapper: Start 
 
 * Step 1 - Запустите `server` - https://github.com/Falck2881/ServerMultimetr
 
@@ -23,6 +21,7 @@ ___
   $ cd ServerMultimetr
   $ ./ServerMultimetr.sh
 ```
+___
 
 * Step 2 - Запустите приложение Multimetr в любом из следующих режимов `shell | GUI`
  
@@ -32,6 +31,8 @@ ___
   $ ./Multimetr.sh GUI
 ```
 > Вы всегда можете воспользоваться командой `help`
+
+___
 
 ## Example execution the program ##
 
@@ -48,6 +49,8 @@ ___
 ![изображение](https://github.com/Falck2881/Multimetr/assets/100667839/eccdd233-813a-4d10-9a03-b34bff388ad9)
 
 > Как можно заметить в shell нам нужно использовать команды и соответствующие параметры чтобы работать с приложением 
+
+___
 
 ## How this working ##
 

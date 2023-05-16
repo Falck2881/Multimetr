@@ -1,0 +1,18 @@
+Этот документ описывает как собрать приложение Multimetr
+
+Step 1 - склонируйте на свою машину репозиторий и переходим в деректорию
+
+$ git clone https://github.com/Falck2881/Multimetr.git
+$ cd Multimetr
+
+Step 2 - Генерируем сборочные файлы в указанную директорию. При этом нам необходимо передать в переменные окружения следующие:
+- В CMAKE_PREFIX_PATH:PATH=путь/до/исходников_Qt - это необходимо что бы cmake находил с помощью таких команд 
+  find_package() , find_program() , find_library() , find_file() , и find_path() библиотеки, файлы конфигурации, модули и т.д
+- В CMAKE_BUILD_TYPE:STRING= Debug | Release - тут указываем release версию или debug
+
+Example
+
+$ mkdir buildMultimetrRelease
+$ cd buildMultimetrRelease
+$ cmake -S ../Multimetr -B . -DCMAKE_PREFIX_PATH:PATH=~/Qt/6.2.3/gcc_64 -DCMAKE_BUILD_TYPE:STRING=Release
+

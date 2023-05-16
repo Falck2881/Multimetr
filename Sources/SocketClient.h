@@ -15,7 +15,6 @@ class Socket: public QObject
         Socket();
         int get() const;
         void close();
-        std::string status();
 
     public slots:
         void restart();
@@ -29,8 +28,8 @@ class Socket: public QObject
         const std::string pathToAddress;
         CommunicationCenter technicalSupport;
     signals:
-        void running();
-        void loading();
+        void successConnect();
+        void failedConnect();
 };
 
 #endif // SOCKETCLIENT_H

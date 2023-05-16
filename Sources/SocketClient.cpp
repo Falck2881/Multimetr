@@ -23,7 +23,7 @@ void Socket::create()
 {
     socket_fd = Sys::createSocket(AF_UNIX,SOCK_STREAM,0);
 
-    if(technicalSupport.exists(socket_fd)){
+    if(technicalSupport.isOpeartionSuccessfully(socket_fd, "Client: Socket successufully create.\n")){
         memset(&domain,0,sizeof(domain));
         domain.sun_family = AF_UNIX;
         strncpy(domain.sun_path, pathToAddress.data(), sizeof(domain.sun_path) - 1);
@@ -34,7 +34,7 @@ bool Socket::connect()
 {
     const int result{Sys::connectWithServer(socket_fd, domain)};
 
-    if(technicalSupport.successfullyConnection(result))
+    if(technicalSupport.isConnect(result))
         return true;
     else{
         close();
@@ -42,21 +42,14 @@ bool Socket::connect()
     }
 }
 
-std::string Socket::status()
-{
-    std::string message{technicalSupport.errorInConnection()};
-    std::cout << message << std::endl;
-    return message;
-}
-
 void Socket::restart()
 {
     close();
     create();
     if(connect())
-        emit running();
+        emit successConnect();
     else
-        emit loading();
+        emit failedConnect();
 }
 
 int Socket::get() const

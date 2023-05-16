@@ -10,7 +10,7 @@ ___
 
 ## OC
 
-Только симейство Linux
+- Linux :penguin:
 
 ## :clapper: Start 
 

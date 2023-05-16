@@ -10,6 +10,11 @@
 
 - Linux :penguin:
 
+## Build 
+- Чтобы собрать этот проект у вас должны быть установлены:
+  - Qt6.2 и выше
+  - QtQml и QtQuick 2.x модули для GUI  
+
 ## :clapper: Start 
 
 * Step 1 - Запустите `server` - https://github.com/Falck2881/ServerMultimetr

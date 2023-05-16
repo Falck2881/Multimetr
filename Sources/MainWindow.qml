@@ -319,10 +319,12 @@ Window {
             answerServer.text = _client.answer
             console.log("Answer: ", _client.answer)
         }
-        onLoading: {
+
+        onRepeatConnect: {
+            console.log("Qml Reboot")
             serverStatus.playing = true
             serverStatus.source = "qrc:/load.gif"
-            _client.onReboot()
+            _client.restart()
         }
 
         onRunning: {

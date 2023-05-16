@@ -7,9 +7,9 @@ class CommunicationCenter
 {
     public:
         CommunicationCenter();
+        bool isConnect(const int result);
         std::string errorInConnection();
-        bool exists(const int socket);
-        bool successfullyConnection(const int result);
+        bool isOpeartionSuccessfully(const int result, const std::string message);
     private:
         int attemptsToConnection;
 };

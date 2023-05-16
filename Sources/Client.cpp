@@ -1,26 +1,23 @@
 #include "Client.h"
 #include <iostream>
 
-Client::Client()
+Client::Client():threadSocket(new QThread)
 {
-    socket.moveToThread(&threadSocket);
-    connect();
-    threadSocket.start();
+    socket.moveToThread(threadSocket);
+    connectToSocket();
+    threadSocket->start();
 }
 
-void Client::connect()
+void Client::connectToSocket()
 {
    QObject::connect(this, &Client::reboot, &socket, &Socket::restart);
-   QObject::connect(&socket, &Socket::loading, this, &Client::onLoading);
-   QObject::connect(&socket, &Socket::running, this, &Client::onRunning);
+   QObject::connect(&socket, &Socket::failedConnect, this, &Client::onRepeatConnect);
+   QObject::connect(&socket, &Socket::successConnect, this, &Client::onRunning);
 }
 
 void Client::sendRequest(const std::string &nameCommand)
 {
-    const qint32 result = Sys::sendRequest(socket.get(),nameCommand.data(),nameCommand.length(), MSG_NOSIGNAL);
-
-    if(Sys::errorToSend(result))
-        socket.status();
+    Sys::sendRequest(socket.get(),nameCommand.data(),nameCommand.length(), MSG_NOSIGNAL);
 }
 
 std::string Client::receiveAnswer()
@@ -30,11 +27,8 @@ std::string Client::receiveAnswer()
     const qint32 result = Sys::reciveAnswer(socket.get(), buffer, sizeof(buffer));
 
     if(Sys::errorToRead(result)){
-        p_answer = socket.status().data();
-        std::cout << p_answer.toStdString() << std::endl;
-        onLoading();
-    }
-    else{
+        onRepeatConnect();
+    }else{
         p_answer = buffer;
         onRunning();
     }
@@ -64,14 +58,14 @@ void Client::disconnect()
     socket.close();
 }
 
-void Client::onReboot()
+void Client::restart()
 {
     emit reboot();
 }
 
-void Client::onLoading()
+void Client::onRepeatConnect()
 {
-    emit loading();
+    emit repeatConnect();
 }
 
 void Client::onRunning()
@@ -81,6 +75,7 @@ void Client::onRunning()
 
 Client::~Client()
 {
-    threadSocket.quit();
-    threadSocket.wait();
+    threadSocket->quit();
+    threadSocket->wait();
+    delete threadSocket;
 }

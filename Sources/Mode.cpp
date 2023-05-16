@@ -9,7 +9,7 @@ Mode::Mode(const qint32 numberArguments, const char* arguments):
     app(nullptr),numberArguments{numberArguments}
 {
     if(isExistsOfArguments())
-        createMode(arguments);
+        createMode("GUI");
     else{
         warning();
         exit(1);
@@ -18,7 +18,7 @@ Mode::Mode(const qint32 numberArguments, const char* arguments):
 
 bool Mode::isExistsOfArguments() const
 {
-    return numberArguments == 2;
+    return 2 == 2;
 }
 
 void Mode::createMode(const std::string typeMode)

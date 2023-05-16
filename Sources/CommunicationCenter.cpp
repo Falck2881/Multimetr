@@ -10,23 +10,23 @@ CommunicationCenter::CommunicationCenter():attemptsToConnection(1)
 
 }
 
-bool CommunicationCenter::exists(const int socket)
-{
-    if(socket != -1)
-        return true;
-    else{
-        std::cout << "Client: Failed to create socket of active." << std::endl;
-        exit(1);
-    }
-}
-
-bool CommunicationCenter::successfullyConnection(const int result)
+bool CommunicationCenter::isConnect(const int result)
 {
     if(result != -1)
         return true;
     else{
         std::cout << errorInConnection();
         return false;
+    }
+}
+
+bool CommunicationCenter::isOpeartionSuccessfully(const int result, const std::string message)
+{
+    if(result != -1)
+        return true;
+    else{
+        std::cout << message << std::endl;
+        exit(1);
     }
 }
 

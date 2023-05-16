@@ -25,26 +25,26 @@ class Client: public QObject
         std::string receiveAnswer();
 
     public slots:
-        void onReboot();
+        void restart();
         void disconnect();
 
     private slots:
         void onRunning();
-        void onLoading();
+        void onRepeatConnect();
 
     private:
-        void connect();
+        void connectToSocket();
 
     private:
         Socket socket;
         QString p_answer;
-        QThread threadSocket;
+        QThread* threadSocket;
 
     signals:
         void updateAnswer();
         void showAnswer();
         void running();
-        void loading();
+        void repeatConnect();
         void reboot();
 };
 

@@ -18,20 +18,24 @@
 
 ## :clapper: Start 
 
+Чтобы запустить **всё**, у вас уже должны быть собраны `ServerMultimetr` и `Multimetr`.
+
 * Step 1 - Запустите `server` - https://github.com/Falck2881/ServerMultimetr
 
 **Example**
 ```
-  $ cd ServerMultimetr
-  $ ./ServerMultimetr.sh
+  ... Вы собираете удобным для вас способом приложение 
+  $ cd buildServerMultimetr
+  $ ./ServerMultimetr
 ```
 
 * Step 2 - Запустите приложение Multimetr в любом из следующих режимов `shell | GUI`
  
 **Example**
 ```
+  ... Вы собираете удобным для вас способом приложение 
   $ cd Multimetr
-  $ ./Multimetr.sh GUI
+  $ ./Multimetr GUI
 ```
 > Вы всегда можете воспользоваться командой `help`
 
